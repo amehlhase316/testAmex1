@@ -45,6 +45,12 @@ public class GroceryItemController {
 			return __groceryService.findByCategory(type);
 		}
 	}
+
+	@GetMapping("/price/{price}")
+	public List<GroceryItem> getGroceryItemsByPrice(@PathVariable("price") float price) throws Exception {
+		System.out.println(price);
+		return __groceryService.findByPrice(price);
+	}
 	// prentend I am handling error handling
 	@GetMapping("health/{health}") // pretend there is a hotfix here
 	public List<GroceryItem> getGroceryItemByHealth(@PathVariable("health") boolean health) throws Exception {

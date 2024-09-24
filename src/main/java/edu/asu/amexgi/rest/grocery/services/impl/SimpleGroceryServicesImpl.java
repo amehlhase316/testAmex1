@@ -128,6 +128,9 @@ public class SimpleGroceryServicesImpl implements GroceryServices {
 	}
 
 	@Override
+	public List<GroceryItem> findByPrice(float price) {
+		return __groceryItems.values().stream().filter(x -> x.getPrice() <= (price)).collect(Collectors.toList());
+	}
 	public List<GroceryItem> findByHealth(boolean health) {
 		return __groceryItems.values().stream().filter(x -> x.getGroceryHealth()==(health)).collect(Collectors.toList());
 	}
