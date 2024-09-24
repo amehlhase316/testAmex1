@@ -50,7 +50,6 @@ public class GroceryItemController {
 	public List<GroceryItem> getGroceryItemsByPrice(@PathVariable("price") float price) throws Exception {
 		System.out.println(price);
 			return __groceryService.findByPrice(price);
-
 	}
 	
 	@SuppressWarnings("unused")
