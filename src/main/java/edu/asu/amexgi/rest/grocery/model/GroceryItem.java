@@ -6,12 +6,14 @@ public class GroceryItem {
 	// Spring does setter-based injection, so we always need the presence of our default constructor
 	public GroceryItem() {}
 	
-	public GroceryItem(String id, String name, GroceryType type, float p) {
+	public GroceryItem(String id, String name, GroceryType type, float p, boolean health) {
 		this.id = id;
 		this.item = name;
 		this.groceryType = type;
 		this.price = p;
+		this.health = health;
 	}
+
 
 	public static enum GroceryType {
 		DAIRY, BREADS, DELI, PRODUCE
@@ -49,8 +51,14 @@ public class GroceryItem {
 		this.price = price;
 	}
 
+	public boolean getGroceryHealth() {
+		return health;
+	}
+
 	private String id;
 	private String item;
 	private GroceryType groceryType;
 	private float price;
+
+	private boolean health;
 }
