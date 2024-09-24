@@ -26,15 +26,15 @@ public class SimpleGroceryServicesImpl implements GroceryServices {
 	private SimpleGroceryServicesImpl() {
 		//let's create some mock data
 		__groceryItems = new HashMap<String, GroceryItem>() {{
-				put("MLK", new GroceryItem("MLK", "milk", GroceryType.DAIRY, 3.99f));
-				put("SWC", new GroceryItem("SWC", "swiss cheese", GroceryType.DAIRY, 4.49f));
-				put("YOG", new GroceryItem("YOG", "yogurt", GroceryType.DAIRY, 0.99f));
-				put("WHB", new GroceryItem("WHB", "wheat bread", GroceryType.BREADS, 2.79f));
-				put("GRB", new GroceryItem("GRB", "garlic bread", GroceryType.BREADS, 1.99f));
-				put("APL", new GroceryItem("APL", "apples", GroceryType.PRODUCE, 0.69f));
-				put("BRC", new GroceryItem("BRC", "broccoli", GroceryType.PRODUCE, 1.19f));
-				put("PAS", new GroceryItem("PAS", "pastrami", GroceryType.DELI, 8.99f));
-				put("HAM", new GroceryItem("HAM", "ham", GroceryType.PRODUCE, 5.69f));
+				put("MLK", new GroceryItem("MLK", "milk", GroceryType.DAIRY, 3.99f, true));
+				put("SWC", new GroceryItem("SWC", "swiss cheese", GroceryType.DAIRY, 4.49f, true));
+				put("YOG", new GroceryItem("YOG", "yogurt", GroceryType.DAIRY, 0.99f, true));
+				put("WHB", new GroceryItem("WHB", "wheat bread", GroceryType.BREADS, 2.79f, false));
+				put("GRB", new GroceryItem("GRB", "garlic bread", GroceryType.BREADS, 1.99f, false));
+				put("APL", new GroceryItem("APL", "apples", GroceryType.PRODUCE, 0.69f, true));
+				put("BRC", new GroceryItem("BRC", "broccoli", GroceryType.PRODUCE, 1.19f, true));
+				put("PAS", new GroceryItem("PAS", "pastrami", GroceryType.DELI, 8.99f, false));
+				put("HAM", new GroceryItem("HAM", "ham", GroceryType.PRODUCE, 5.69f, false));
 		}};
 	}
 
@@ -125,6 +125,11 @@ public class SimpleGroceryServicesImpl implements GroceryServices {
 	@Override
 	public List<GroceryItem> findByCategory(GroceryType category) {
 		return __groceryItems.values().stream().filter(x -> x.getGroceryType().equals(category)).collect(Collectors.toList());
+	}
+
+	@Override
+	public List<GroceryItem> findByHealth(boolean health) {
+		return __groceryItems.values().stream().filter(x -> x.getGroceryHealth()==(health)).collect(Collectors.toList());
 	}
 
 	// function to generate a random string of length 3

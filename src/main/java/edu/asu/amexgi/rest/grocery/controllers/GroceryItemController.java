@@ -33,7 +33,7 @@ public class GroceryItemController {
 		__groceryService = GroceryServices.getGroceryService();  // we should check if it is null
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/{id}") // fixing the bug B mentioned
 	public GroceryItem getGroceryItem(@PathVariable("id") String id) throws Exception {
 		return __groceryService.findOne(id);
 	}
@@ -44,6 +44,11 @@ public class GroceryItemController {
 		} else {
 			return __groceryService.findByCategory(type);
 		}
+	}
+	// prentend I am handling error handling
+	@GetMapping("health/{health}") // pretend there is a hotfix here
+	public List<GroceryItem> getGroceryItemByHealth(@PathVariable("health") boolean health) throws Exception {
+		return __groceryService.findByHealth(health);
 	}
 	
 	@SuppressWarnings("unused")
