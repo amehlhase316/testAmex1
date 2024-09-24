@@ -127,6 +127,11 @@ public class SimpleGroceryServicesImpl implements GroceryServices {
 		return __groceryItems.values().stream().filter(x -> x.getGroceryType().equals(category)).collect(Collectors.toList());
 	}
 
+	@Override
+	public List<GroceryItem> findByPrice(float price) {
+		return __groceryItems.values().stream().filter(x -> x.getPrice()<=(price)).collect(Collectors.toList());
+	}
+
 	// function to generate a random string of length 3
 	// adapted from: https://www.geeksforgeeks.org/generate-random-string-of-given-size-in-java/
 	private String __getNewId() {
